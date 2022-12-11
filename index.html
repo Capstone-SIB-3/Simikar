@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simikar</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="icon" type="image/x-icon" href="./images/icon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" id="active">Beranda</a>
+            <a href="#ml">Sistem Rekomendasi</a>
+            <a href="#sib">Tentang Kami</a>
+            <a href="#" id="menu"><span class="material-symbols-outlined">menu</span></a>
+        </nav>
+        <div>
+            <img src="./images/logo.svg" id="simikar" alt="Logo Simikar" draggable="false">
+            <form id="kemampuan">
+                <input id="isi" type="text" placeholder="Masukkan kemampuan yang Anda miliki...">
+                <button type="submit"><span class="material-symbols-outlined">search</span></button>
+            </form>
+        </div>
+    </header>
+    <main>
+        <div class="box" id="ml">
+            <img src="./images/simikarInfo.svg" alt="Info SIMIKAR" draggable="false">
+        </div>
+        <div class="sr">
+            <img src="./images/blobMiddle.svg" alt="Blob Ilustrasi Sistem Rekomendasi Pekerjaan" draggable="false">
+            <div>
+                <h1>Rekomendasi Pekerjaan</h1>
+                <p id="teksAtas">Untuk mendapatkan rekomendasi pekerjaan di bidang IT,</p>
+                <p id="teksBawah">mohon untuk mengisi kolom kemampuan yang telah kami sediakan.</p>
+                <div id="hasil">
+                    <img src="./images/ornament.png" alt="Ornament Hasil" draggable="false">
+                    <h3 id="result">Scroll Up!</h3>
+                </div>
+                <h2 id="bold">Machine Learning : </h2><span id="daftarKemampuan">Content Based Filtering</span>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <img src="./images/logo.svg" id="simikarFooter" alt="Logo Simikar" draggable="false">
+            <img id="sib" src="./images/logoSIB.svg" alt="Logo Dicoding" draggable="false">
+        </div>
+    </footer>
+    <p id="footer">2022 SIMIKAR. All rights reserved. <span>Terms of use</span> | <span>Privacy policys</span></p>
+    <script type="text/javascript" src="./index.js"></script>  
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script>
+        const mq = window.matchMedia( "(min-width: 1366px)" );
+        if (mq.matches) {
+            console.log("window width >= 1366px");
+        } else {
+            Swal.fire({
+                title: 'Not Supported!',
+                text: 'SIMIKAR belum dapat berjalan optimal pada screen dibawah 1366px! Gunakan Desktop!',
+                icon: 'error',
+                confirmButtonText: 'Sorry!'
+            })
+        }
+
+        const submitAction = document.getElementById("kemampuan");
+        submitAction.addEventListener("submit", function (event) {
+            const data = document.getElementById("isi").value;
+            window.location.hash = '#ml';
+            window.location.reload(true);
+            document.getElementById("teksAtas").innerHTML = "Berdasarkan kemampuan yang Anda miliki di bidang IT,";
+            document.getElementById("teksBawah").innerHTML = "kami memberi rekomendasi pekerjaan dengan jenis berikut.";
+            document.getElementById("bold").innerHTML = "Kemampuan Anda : "
+            document.getElementById("daftarKemampuan").innerHTML = data;
+            let hasil = "";
+            if (data == "PHP, Laravel, Vue.js") {
+                hasil = "Full Stack Developer"
+            } else if (data == "React.js, Laravel, PHP") {
+                hasil = "Teach Lead"
+            } else if (data == "Golang, Backend Development, SQL Server, MySQL") {
+                hasil = "Golang Developer"
+            } else if (data == "Node.js, Test Automation, Selenium, Javascript, Linux") {
+                hasil = "IT QA Automation"
+            } else if (data == "Java Apache, Tomcat, Java J2EE, Angular, Javascript") {
+                hasil = "Java Developer"
+            } else if (data == "Sales & Marketing, Digital Marketing, Business Development, Marketing Communications, Sales Strategy & Management") {
+                hasil = "Business Manager"
+            } else if (data == "Product Management, Product Marketing, Business Analysis, Business Intelligence") {
+                hasil = "Corporate Analyst"
+            } else if (data == "Social Media, Social Media Marketing, Content Strategy") {
+                hasil = "Social media Intern"
+            } else if (data == "MySQL, Databases, Data Warehouse, Amazon Web Services (AWS), Javascript, Data Visualization, Python, Golang, Web Applications, Data Management, PostgreSQL, Communication Skills, Cloud Computing") {
+                hasil = "Tech Ops"
+            } else if (data == "React.js, REST APIs, HTML5, CSS3") {
+                hasil = "React.js, REST APIs, HTML5, CSS3"
+            } else if (data == "Project Management, Jira, Risk Management, Attention to Detail, Teamwork, Problem Solving, Requirements Analysis, Analytics & Reporting, Leadership") {
+                hasil = "Project Manager"
+            } else if (data == "SQL, Ubuntu, Data Management, PostgreSQL, Data Analysis") {
+                hasil = "Database Engineer"
+            } else if (data == "Automation, QA, SQL") {
+                hasil = "IT QA Automation"
+            } else if (data == "Video Creation, Video Production, Video Editing") {
+                hasil = "Video Production Producer"
+            } else if (data == "Security, Cyber Security, Information Security, Network Security, Information Technology, Networking") {
+                hasil = "IT Security Network"
+            } else if (data == "Graphic Design, Design Strategy, Experience Design") {
+                hasil = "Graphic Designer"
+            } else if (data == "Git, Amazon Web Services (AWS), DevOps, Security, PostgreSQL, Compliance, MongoDB") {
+                hasil = "DevOps Engineer"
+            } else if (data == "Java, Swift, Design Patterns, APIs, Mobile Development") {
+                hasil = "Mobile Engineer"
+            } else if (data == "WordPress, HTML, JS, CSS, React.js, Vue.js") {
+                hasil = "Frontend Developer"
+            } else {
+                hasil = "Full Stack Developer";
+            }
+            document.getElementById("result").innerHTML = hasil;
+        });
+    </script>
+</body>
+</html>
